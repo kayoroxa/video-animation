@@ -1,0 +1,9 @@
+have {
+  O que significa have??
+
+  have significa que você tem algo
+  --
+  por exemplo uma casa
+  ou até mesmo um carro
+  --
+}
