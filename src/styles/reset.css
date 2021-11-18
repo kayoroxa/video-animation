@@ -12,6 +12,16 @@ html {
   color: white;
 }
 
+button {
+  background-color: rgb(168, 168, 168);
+  color: black;
+  padding: 20px;
+  margin: 30px;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
 p {
   font-size: 0% !important;
   transition: font-size 0.2s;
