@@ -7,7 +7,7 @@ html {
   margin: 0;
   padding: 0;
   font-family: 'Roboto', sans-serif;
-  font-size: 16px;
+  /* font-size: 1.4rem; */
   /* line-height: 0.9; */
   color: white;
 }
@@ -15,8 +15,8 @@ html {
 button {
   background-color: rgb(168, 168, 168);
   color: black;
-  padding: 20px;
-  margin: 30px;
+  padding: 5px 20px;
+  border-radius: 20px;
   border: none;
   cursor: pointer;
   outline: none;

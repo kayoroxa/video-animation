@@ -2,9 +2,12 @@ import React from 'react'
 
 import { ContainerThumb } from './styles-thumb'
 
-interface IProps {}
-const Thumb = ({}: IProps) => {
-  return <ContainerThumb>Sou uma thumb</ContainerThumb>
+interface IProps {
+  children: React.ReactNode
+  onClick: (index?: number) => void
+}
+const Thumb = ({ children, onClick }: IProps) => {
+  return <ContainerThumb onClick={() => onClick()}>{children}</ContainerThumb>
 }
 
 export default Thumb

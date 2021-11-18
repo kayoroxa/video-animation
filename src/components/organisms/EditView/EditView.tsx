@@ -4,9 +4,16 @@ import { ContainerEditView } from './styles-edit-view'
 
 interface IProps {
   layers: React.ReactNode[]
+  forceIndex?: number
+  fixed?: boolean
+  fontSize?: number
 }
-const EditView = ({ layers }: IProps) => {
+const EditView = ({ layers, forceIndex, fixed, fontSize }: IProps) => {
   const [index, setIndex] = useState(0)
+
+  useEffect(() => {
+    forceIndex && setIndex(forceIndex)
+  }, [forceIndex])
 
   function handleKeyDown(e: KeyboardEvent) {
     if (e.key === 'ArrowLeft') {
@@ -17,14 +24,16 @@ const EditView = ({ layers }: IProps) => {
   }
 
   useEffect(() => {
-    document.addEventListener('keydown', handleKeyDown)
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown)
+    if (!fixed) {
+      document.addEventListener('keydown', handleKeyDown)
+      return () => {
+        document.removeEventListener('keydown', handleKeyDown)
+      }
     }
   }, [layers])
 
   return (
-    <ContainerEditView>
+    <ContainerEditView fontSize={fontSize}>
       {layers.slice(0, index).map((layer, index) => (
         <div key={index}>{layer}</div>
       ))}

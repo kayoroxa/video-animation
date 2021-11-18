@@ -1,17 +1,20 @@
 import React from 'react'
 
 import { ContainerModeEdit } from './styles-mode-edit'
-import View from '../../organisms/EditView'
+import EditView from '../../organisms/EditView'
+import TimeLine from '../../organisms/TimeLine'
 import { useState, useEffect } from 'react'
-
+import { Textfit } from 'react-textfit'
 interface IProps {}
 const ModeEdit = ({}: IProps) => {
   const [indexLayer, setIndexLayer] = useState(0)
 
   const [frames, setFrames] = useState([
     [
-      <div id="primeiro">primeiro text</div>,
-      <div id="segundo">segundo text</div>,
+      <Textfit mode="single">me text</Textfit>,
+      <Textfit mode="single">segundo text</Textfit>,
+      // <div id="primeiro">primeiro text</div>,
+      // <div id="segundo">segundo text</div>,
     ],
     [
       <div id="primeiro">primeiro text</div>,
@@ -19,23 +22,18 @@ const ModeEdit = ({}: IProps) => {
       <div id="terceiro">terceiro text</div>,
     ],
   ])
-
-  function handleIncrease() {
-    setIndexLayer(prev => Math.min(prev + 1, frames.length - 1))
-  }
-  function handleDecrease() {
-    setIndexLayer(prev => Math.max(prev - 1, 0))
-  }
-
   return (
     <ContainerModeEdit>
-      <div>{indexLayer}</div>
-      <div>
-        <button onClick={handleIncrease}>Increase Index Layer</button>
-        <button onClick={handleDecrease}>Decrease Index Layer</button>
-      </div>
-      {/* <TimeLine /> */}
-      <View layers={frames[indexLayer]} />
+      <TimeLine
+        setIndexLayer={setIndexLayer}
+        indexLayer={indexLayer}
+        len={frames.length}
+        frames={frames}
+      />
+      <EditView
+        layers={frames[indexLayer]}
+        forceIndex={frames[indexLayer].length}
+      />
       {/* <Controls /> */}
     </ContainerModeEdit>
   )
