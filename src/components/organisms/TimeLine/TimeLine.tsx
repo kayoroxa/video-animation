@@ -26,7 +26,11 @@ const TimeLine = ({ setIndexLayer, indexLayer, len, frames }: IProps) => {
       </div>
       <div className="container-thumbs">
         {frames.map((frame, index) => (
-          <Thumb key={index} onClick={() => setIndexLayer(index)}>
+          <Thumb
+            key={index}
+            highlight={index === indexLayer}
+            onClick={() => setIndexLayer(index)}
+          >
             <EditView
               layers={frame}
               forceIndex={frame.length}

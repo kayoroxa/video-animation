@@ -1,6 +1,10 @@
 import styled from 'styled-components'
 
-export const ContainerThumb = styled.div`
+interface IProps {
+  highlight?: boolean
+}
+
+export const ContainerThumb = styled.div<IProps>`
   width: 100%;
   height: 80px;
   background: black;
@@ -9,6 +13,8 @@ export const ContainerThumb = styled.div`
   align-items: center;
   justify-content: center;
   border-radius: 5px;
+  border: ${props => (props.highlight ? '2px solid white' : 'none')};
+  box-sizing: border-box;
 
   :hover {
     cursor: pointer;
